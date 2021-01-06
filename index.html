@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <header class="bg-danger text-center">
+        <h3>JS DOM</h3>
+    </header>
+    <main class="container">
+        <ul id="arrayRender">
+
+        </ul>
+    </main>
+    <footer class="bg-danger">
+        <h5>&copy; Sangeetha, 2021</h5>
+    </footer>
+</body>
+<script>
+   const HTMLcont = document.getElementById("arrayRender")
+   const menuItems = [
+        {
+            type: "Vegetarian",
+            item: "Pakoda"
+        },
+        {
+            type: "Vegan",
+            item: "Jeera Rice with coconut oil"
+        },
+        {
+            type: "Vegetarian",
+            item: "Falooda"
+        },
+        {
+            type: "Vegan",
+            item: "Jammun"
+        },
+        {
+            type: "Vegetarian",
+            item: "Kheer"
+        },
+        {
+            type: "Vegan",
+            item: "Almond milk Mangoo Laasi"
+        },
+        {
+            type: "Vegetarian",
+            item: "Naan"
+        },
+    ]
+  let veganOnly = menuItems.filter((item) => {
+      return (item.type !== "Vegetarian")
+  })
+  let htmlCode = ""
+  for(let i=0;i<veganOnly.length;i++){
+    htmlCode += `
+    <li>${veganOnly[i].item}</li>
+    `
+  }
+  HTMLcont.innerHTML = htmlCode;
+</script>
+</html>

@@ -36,3 +36,4 @@ Avatar.changeRating = 8
 
 console.log(Titanic.review)
 console.log(Avatar.review)
+
