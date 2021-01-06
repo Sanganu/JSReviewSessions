@@ -10,7 +10,8 @@ class BookInventory{
         this.ISBN = ISBN
         this.stock = stock
     }
-    checkInventory(){
+    //get keyword method --> property
+    get checkInventory(){
         if (this.stock === 0){
             return "Out of stock" + this.stock
         }
@@ -75,13 +76,13 @@ console.log("========================================")
 console.log("Class Component")
 console.log("========================================")
 const PJ = new BookInventory("Percy Jackson","Rick Rordan","2192932",45)
-console.log(PJ.checkInventory())
+console.log(PJ.checkInventory)
 PJ.updateInventory(10)
-console.log(PJ.checkInventory())
+console.log(PJ.checkInventory)
 PJ.updateInventory(29)
-console.log(PJ.checkInventory())
+console.log(PJ.checkInventory)
 PJ.setStock(22)
-console.log(PJ.checkInventory())
+console.log(PJ.checkInventory)
 
 
 console.log("========================================")
