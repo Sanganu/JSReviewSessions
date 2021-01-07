@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Timers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="bg-warning text-center">
+        <h3>JS Timers</h3>
+    </header>
+    <div class="container">
+        <div id="clock"></div>
+        <h6 id="currenttime"></h6>
+    </div>
+    <script>
+        const timeHTML = document.getElementById("clock")
+        const clockHTML = document.getElementById("currenttime")
+        let seconds = 0;
+        let minutes = 0;
+        let hour = 0;
+        let timerObject = setInterval(displayClock, 1000)
+        function displayClock() {
+            seconds++;
+            if (seconds >= 60) {
+                minutes++
+                if (minutes >= 60) {
+                    hour++;
+                    miuntes = 0;
+                }
+                seconds = 0;
+            }
+            if (seconds < 10) {
+                displays = "0" + seconds
+            }
+            else{
+                displays = seconds
+            }
+            if (minutes < 10) {
+                displaym = "0" + minutes
+            }
+            else {
+                displaym = minutes
+            }
+            if (hour < 10) {
+                displayh = "0" + hour
+            }
+            else{
+                displayh = hour
+            }
+            clockHTML.innerText = `${displayh} : ${displaym} : ${displays}`
+            let currentT = new Date();
+            timeHTML.innerHTML = `<h6>Today : ${currentT.toLocaleDateString()}</h6>
+                           <h3>Time: ${currentT.toLocaleTimeString()}</h3>`
+
+        }
+    </script>
+</body>
+
+</html>
