@@ -2,7 +2,7 @@
 // ES 2015 or ES6 --> Class keyword was introduced but the it does not change JS's prototypal inheritance model
 
 // Activity-1
-
+// Encapsulation
 class BookInventory{
     constructor(title,author,ISBN,stock){
         this.title = title
