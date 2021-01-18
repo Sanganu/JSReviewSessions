@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DOM</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+        crossorigin="anonymous">
     <style>
-       footer{
-           display: fixed;
-           bottom:0;
-           width:100%;
-           height:10%;
-       }
+        body {
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+
+        }
     </style>
 </head>
+
 <body>
     <header class="bg-danger text-center">
         <h3>JS DOM and Arrays</h3>
-       
+        <h6 class="clock"></h6>
+        <h6 class="clock"></h6>
+
     </header>
     <main class="container">
-           
-          
-        <ul id="arrayRender">
+        <article class="row">
+            <h5>Arrays - Concat Vs Push</h5>
+            <section class="col-md-6">
+                <h6>Code Block</h6>
+                <img src="./screenshots/code.PNG" />
+            </section>
+            <section class="col-md-6">
+                <h6>Output</h6>
+                <img src="./screenshots/output.PNG" />
+            </section>
+        </article>
+        <article class="row">
+            <section class="col-md-6">
+                <h6>Using innerHTML</h6>
+                <ul class="arrayRender">
 
-        </ul>
+                </ul>
+                <h6>Using createElement &and; appendChild</h6>
+                <ul class="arrayRender">
+
+                </ul>
+            </section>
+            <section class="col-md-6">
+                <img src="./screenshots/Capture.PNG" />
+            </section>
+          
+        </article>
     </main>
+
     <footer class="bg-danger">
         <h5>&copy; Sangeetha, 2021</h5>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 </body>
 <script>
-   const HTMLcont = document.getElementById("arrayRender")
- 
-   const menuItems = [
+    const HTMLcont = document.querySelectorAll(".arrayRender")
+
+    const menuItems = [
         {
             type: "Vegetarian",
             item: "Pakoda"
@@ -64,23 +94,53 @@
             item: "Naan"
         },
     ]
-  let veganOnly = menuItems.filter((item) => {
-      return (item.type !== "Vegetarian")
-  })
-  let htmlCode = ""
-  for(let i=0;i<veganOnly.length;i++){
-    htmlCode += `
-    <li>${veganOnly[i].item}</li>
-    `
-  }
-  HTMLcont.innerHTML = htmlCode;
 
-  var primary = ["Red","Green","Yellow","blue"]
-  var extended = ["Purple","Black","Teal","Orange"]
-  var newArray = []
-  
-  
+    // Filter Vegetarian items
+    let veganOnly = menuItems.filter((item) => {
+        return (item.type !== "Vegetarian")
+    })
 
- 
+    let htmlCode = ""
+    for (let i = 0; i < veganOnly.length; i++) {
+        htmlCode += `<li>${veganOnly[i].item}</li>`
+        let liEle = document.createElement("li")
+        liEle.textContent = veganOnly[i].item
+        HTMLcont[1].appendChild(liEle)
+    }
+
+    console.log(htmlCode)
+
+    HTMLcont[0].innerHTML = htmlCode;
+
+
+    //Arrays
+
+    let primary = ["Red", "Green", "Yellow", "blue"]
+    let extended = ["Purple", "Black", "Teal", "Orange"]
+    let newArray = []
+
+    newArray = primary.concat(extended)
+    console.log("Concat", newArray)
+    newArray = []
+
+    newArray.push(primary)
+    newArray.push(extended)
+    console.log("Push", newArray)
+
+    const timerHTML = document.querySelectorAll(".clock");
+    const today = new Date()
+    timerHTML[0].innerText = today.toDateString()
+
+    const timerObject = setInterval(renderClock, 1000)
+
+    function renderClock() {
+        let currenttime = new Date()
+        timerHTML[1].innerText = currenttime.toLocaleTimeString()
+    }
+
+
+
+
 </script>
+
 </html>
